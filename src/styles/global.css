@@ -1,0 +1,225 @@
+/* Variáveis são definidas dentro de :root */
+/* :root representa o elemento raiz do HTML */
+:root {
+  --cor-fundo: #0d0d0f;       /* fundo escuro */
+  --cor-destaque: #f0c040;    /* amarelo dourado */
+  --cor-texto: #e8e8f0;       /* texto claro */
+  --cor-texto-fraco: #7a7a90; /* texto secundário */
+  --cor-borda: #2a2a35;       /* bordas sutis */
+  --raio: 12px;               /* arredondamento dos cantos */
+}
+
+/* Para usar uma variável: */
+background: var(--cor-fundo);
+color: var(--cor-destaque);
+
+/* Reset: zera margens e ajusta o box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box; /* padding não aumenta o tamanho do elemento */
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos do corpo da página */
+body {
+  font-family: 'Courier New', monospace; /* fonte monoespaçada */
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  min-height: 100vh; /* ocupa no mínimo a altura da tela */
+  line-height: 1.6;  /* espaçamento entre linhas */
+}
+
+/* Cabeçalho fixo no topo */
+.site-header {
+  position: sticky;  /* fica no topo ao rolar a página */
+  top: 0;
+  z-index: 100;      /* fica na frente de outros elementos */
+  background: #0d0d0f;
+  border-bottom: 1px solid var(--cor-borda);
+  padding: 0 2rem;
+  display: flex;     /* itens lado a lado */
+  align-items: center;
+  gap: 1.5rem;
+  height: 60px;
+}
+
+/* Logo no cabeçalho */
+.header-logo {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--cor-destaque);
+  text-decoration: none; /* remove sublinhado do link */
+}
+
+/* Centraliza e limita a largura do conteúdo */
+.main-content {
+  max-width: 860px;   /* largura máxima */
+  margin: 0 auto;     /* centraliza horizontalmente */
+  padding: 2rem;
+}
+
+/* Grade de cards */
+.exercises-grid {
+  display: grid;
+  /* cria colunas automáticas com mínimo de 280px */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+/* Card individual */
+.exercise-card {
+  display: block;
+  text-decoration: none;        /* remove sublinhado */
+  background: #141418;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+  position: relative;
+  transition: transform 0.2s, border-color 0.2s; /* animação suave */
+  cursor: pointer;
+}
+
+/* Efeito ao passar o mouse */
+.exercise-card:hover {
+  border-color: var(--cor-destaque);
+  transform: translateY(-2px); /* sobe 2px */
+}
+
+/* Card que envolve o formulário */
+.form-card {
+  background: #141418;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Grupo de campo (label + input) */
+.field {
+  display: flex;
+  flex-direction: column; /* label em cima, input embaixo */
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Rótulo do campo */
+.field label {
+  font-size: 0.72rem;
+  color: var(--cor-texto-fraco);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Campo de texto */
+.field input, .field select {
+  background: #1c1c22;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  color: var(--cor-texto);
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  padding: 0.65rem 0.9rem;
+  width: 100%;
+  outline: none; /* remove borda padrão do navegador ao focar */
+  transition: border-color 0.2s;
+}
+
+/* Destaque ao clicar no campo */
+.field input:focus {
+  border-color: var(--cor-destaque);
+}
+
+/* Botão base */
+.btn {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.75rem 1.75rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+  margin-right: 0.75rem;
+}
+
+/* Botão principal (amarelo) */
+.btn-primary {
+  background: var(--cor-destaque);
+  color: #0d0d0f; /* texto escuro sobre fundo amarelo */
+}
+
+.btn-primary:hover {
+  background: #ffd060;
+  transform: translateY(-1px);
+}
+
+/* Botão secundário (transparente) */
+.btn-ghost {
+  background: transparent;
+  color: var(--cor-texto-fraco);
+  border: 1px solid var(--cor-borda);
+}
+
+.btn-ghost:hover {
+  border-color: var(--cor-destaque);
+  color: var(--cor-destaque);
+}
+
+/* Painel que mostra o resultado do cálculo */
+.result-panel {
+  background: #1c1c22;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.75rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Faixa colorida na borda esquerda */
+.result-panel::before {
+  content: '';           /* elemento vazio (obrigatório) */
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--cor-destaque);
+}
+
+/* Valor em destaque */
+.result-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--cor-destaque);
+  margin-bottom: 0.75rem;
+}
+
+/* Linha de detalhe */
+.result-row {
+  display: flex;
+  justify-content: space-between; /* empurra itens para as extremidades */
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--cor-borda);
+  font-size: 0.82rem;
+}
+
+.result-row:last-child {
+  border-bottom: none; /* remove borda da última linha */
+}
+
+/* Caixa de mensagem de erro */
+.error-msg {
+  font-size: 0.78rem;
+  color: #f87171;        /* vermelho claro */
+  margin-top: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(248, 113, 113, 0.08); /* vermelho translúcido */
+  border-radius: 6px;
+  border-left: 2px solid #f87171;
+}
+/* No CSS */
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* duas colunas iguais */
+  gap: 1.2rem;
+}

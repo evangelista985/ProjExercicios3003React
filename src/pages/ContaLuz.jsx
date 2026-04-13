@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const bandeiras = [
   {
@@ -105,7 +106,7 @@ export default function ContaLuz() {
 
         {erro && <div className="error-msg">{erro}</div>}
 
-        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '1rem' }}>
+        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '1rem', justifyContent: 'center' }}>
           <button className="btn btn-primary" onClick={calcular}>
             Calcular Conta →
           </button>
@@ -143,6 +144,9 @@ export default function ContaLuz() {
           </div>
         </div>
       )}
+      <Link to='/' className='btn btn-ghost' style={{ marginTop: '2rem' }}>
+        ← Voltar ao menu
+      </Link>
     </div>
   )
 }

@@ -1,12 +1,6 @@
 import {useState} from 'react'
 import { Link } from 'react-router-dom'
 
-// No return, antes do formulário:
-<Link to='/' className='btn btn-ghost'>
-  ← Voltar ao menu
-</Link>
-
-
 
 // Este array fica FORA da função do componente
 // (não muda nunca, não precisa ser estado)
@@ -57,28 +51,38 @@ export default function ImpostoRenda() {
   }
 
   return (
-    <div>
-      <h1>Imposto de Renda</h1>
+    <div className="exercise-page">
+      <div className="exercise-header">
+        <h1>💰 Imposto de Renda</h1>
+      </div>
 
-      <label>Salário Bruto (R$):</label>
-      <input
-        type='number'
-        value={salario}
-        onChange={(e) => setSalario(e.target.value)}
-        placeholder='ex: 3500'
-      />
+      <div className="form-card">
+        <div className="field">
+          <label>Salário Bruto (R$):</label>
+          <input
+            type='number'
+            value={salario}
+            onChange={(e) => setSalario(e.target.value)}
+            placeholder='ex: 3500'
+          />
+        </div>
 
-      {erro && <p style={{ color: 'red' }}>{erro}</p>}
-      <button onClick={calcular}>Calcular IR</button>
+        {erro && <div className="error-msg">{erro}</div>}
+        <button className="btn btn-primary" onClick={calcular}>Calcular IR →</button>
+      </div>
 
       {resultado !== null && (
-        <div>
+        <div className="result-panel">
+          <div className="result-label">// resultado</div>
           <p>Salário bruto: R$ {parseFloat(salario).toFixed(2)}</p>
-          <p>Desconto IR:   R$ {resultado.desconto.toFixed(2)}</p>
-          <p>Salário líquido: R$ {resultado.liquido.toFixed(2)}</p>
+          <p>Desconto IR: R$ {resultado.desconto.toFixed(2)}</p>
+          <p className="result-value">Salário líquido: R$ {resultado.liquido.toFixed(2)}</p>
         </div>
       )}
+      
+      <Link to='/' className='btn btn-ghost' style={{ marginTop: '2rem' }}>
+        ← Voltar ao menu
+      </Link>
     </div>
   )
-
 }

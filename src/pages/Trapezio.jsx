@@ -45,9 +45,6 @@ export default function Trapezio() {
 
   return (
     <div className="exercise-page">
-      <Link to='/' className='btn btn-ghost'>
-        ← Voltar ao menu
-      </Link>
       <div className="exercise-header">
         <div className="exercise-num">// exercício 01</div>
         <h1 className="exercise-title">📐 Área do Trapézio</h1>
@@ -119,6 +116,9 @@ export default function Trapezio() {
           </div>
         </div>
       )}
+      <Link to='/' className='btn btn-ghost' style={{ marginTop: '2rem' }}>
+        ← Voltar ao menu
+      </Link>
     </div>
   )
 }

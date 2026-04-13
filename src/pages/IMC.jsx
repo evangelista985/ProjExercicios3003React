@@ -1,4 +1,9 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+
+
+
+
 
 export default function IMC() {
   const [sexo, setSexo] = useState('masculino')
@@ -157,6 +162,9 @@ export default function IMC() {
           </div>
         </div>
       )}
+      <Link to='/' className='btn btn-ghost' style={{ marginTop: '2rem' }}>
+        ← Voltar ao menu
+      </Link>
     </div>
   )
 }
